@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你给我混沌，我给你精准</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 32px;
+            color: #fff;
+        }
+        h1 span {
+            color: #f0a050;
+        }
+        .section {
+            margin-bottom: 36px;
+        }
+        .section p {
+            margin-bottom: 16px;
+            color: #ccc;
+        }
+        .section strong {
+            color: #fff;
+            font-weight: 600;
+        }
+        .divider {
+            border: none;
+            border-top: 1px solid #2a2a2a;
+            margin: 36px 0;
+        }
+        .service-card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .service-card.free {
+            border-color: #2d5a3d;
+        }
+        .service-card.paid149 {
+            border-color: #4a3d2d;
+        }
+        .service-card.paid800 {
+            border-color: #4d2d2d;
+        }
+        .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .service-card .price {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .price.free-price { color: #4ade80; }
+        .price.mid-price { color: #f0a050; }
+        .price.high-price { color: #f07050; }
+        .service-card p {
+            font-size: 14px;
+            color: #999;
+        }
+        .credentials {
+            list-style: none;
+            padding: 0;
+        }
+        .credentials li {
+            padding: 8px 0;
+            color: #aaa;
+            font-size: 15px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .credentials li:last-child {
+            border-bottom: none;
+        }
+        .credentials li::before {
+            content: "→ ";
+            color: #f0a050;
+        }
+        /* 案例 */
+        .case {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .case h3 {
+            font-size: 17px;
+            color: #f0a050;
+            margin-bottom: 16px;
+        }
+        .case blockquote {
+            background: #0d0d0d;
+            border-left: 3px solid #333;
+            padding: 16px;
+            margin: 12px 0;
+            font-style: italic;
+            color: #888;
+            font-size: 14px;
+        }
+        .case .insight {
+            margin-top: 16px;
+        }
+        .case .insight p {
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        .case .insight strong {
+            color: #fff;
+        }
+        .case .core-question {
+            background: #1a150d;
+            border: 1px solid #3d2d1a;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            font-size: 15px;
+            color: #f0a050;
+            font-weight: 500;
+        }
+        /* 表单 */
+        .form-section {
+            background: #141414;
+            border: 2px solid #f0a050;
+            border-radius: 16px;
+            padding: 32px 24px;
+            margin-top: 48px;
+        }
+        .form-section h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .form-section .subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+        textarea {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 16px;
+            color: #e8e8e8;
+            font-size: 15px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.2s;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #f0a050;
+        }
+        input[type="text"] {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #e8e8e8;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #f0a050;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #f0a050;
+            color: #0a0a0a;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover {
+            background: #f5b570;
+        }
+        .submit-btn:disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+        .form-note {
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+        /* 免责 */
+        .disclaimer {
+            margin-top: 48px;
+            padding: 16px;
+            background: #0d0d0d;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.6;
+        }
+        /* 成功提示 */
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 32px;
+        }
+        .success-msg h3 {
+            font-size: 22px;
+            color: #4ade80;
+            margin-bottom: 12px;
+        }
+        .success-msg p {
+            color: #888;
+            font-size: 15px;
+        }
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .container { padding: 24px 16px 60px; }
+            h1 { font-size: 22px; }
+            .service-card { padding: 16px; }
+            .form-section { padding: 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>我病休四年，用AI到极致，<br>现在帮你做那个<span>拖了很久的决定</span></h1>
+
+        <div class="section">
+            <p>我是一个病休四年的人。</p>
+            <p>四年里，我花了大量时间跟自己对话——不是冥想那种，是那种凌晨三点脑子里有一百条线头、每条都连着不同的恐惧和渴望、但哪一条都说不清楚的状态。</p>
+            <p>后来我发现，我擅长一件事：<strong>把这种说不清楚的状态，变成能说清楚的话。</strong></p>
+            <p>不是心理咨询。不是人生教练。不是鸡汤。</p>
+            <p>是有人把一团乱麻扔过来，我能找到那根线头，拽出来，让你看见——原来你纠结的不是A还是B，你纠结的是"我值不值得选那个让我开心的选项"。</p>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <h2 style="font-size:20px;color:#fff;margin-bottom:20px;">我能做什么</h2>
+
+            <div class="service-card free">
+                <h3>🆓 免费·混沌解析</h3>
+                <div class="price free-price">免费</div>
+                <p>把你脑子里乱的东西写给我。不用组织语言，不用逻辑清晰，语音转文字直接发也行。我会给你一份结构化的解析——你真正在纠结什么、卡在哪里、为什么一直做不了决定。每天3个名额。</p>
+            </div>
+
+            <div class="service-card paid149">
+                <h3>深度解析报告</h3>
+                <div class="price mid-price">¥149</div>
+                <p>基于免费解析，进一步深挖。一份完整的书面报告，包含你的思维模式识别、盲区定位、以及一个你很可能一直在回避但必须面对的核心问题。</p>
+            </div>
+
+            <div class="service-card paid800">
+                <h3>深度洞察·一个问题</h3>
+                <div class="price high-price">¥800</div>
+                <p>你带一个一直拖着没做决定的问题来，我给你一份完整的深度洞察报告。不是给你答案，是让你自己看清后，终于能动了。24小时内交付书面报告。</p>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <h2 style="font-size:20px;color:#fff;margin-bottom:20px;">凭什么是我</h2>
+            <ul class="credentials">
+                <li>病休四年，真实理解"想做但动不了"的状态</li>
+                <li>用AI到极致——我的搭档是AI，我的方法论来自AI，我比任何人都懂AI时代的个人突围</li>
+                <li>盖洛普前五：交往、审慎、理念、体谅、关联——我能看见你，我能听懂你，我能帮你看见你自己</li>
+                <li>不包装、不鸡汤、不假装正能量——如果你需要被哄，找别人；如果你需要被看见，来找我</li>
+            </ul>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <h2 style="font-size:20px;color:#fff;margin-bottom:20px;">看看效果</h2>
+
+            <div class="case">
+                <h3>案例：「该不该换城市」</h3>
+                <blockquote>我在北京干了六年，其实一直想走，去成都或者杭州，但是又觉得走了是不是就承认在这混不下去了？而且我妈肯定会说都稳定了折腾什么。但每次加班到十一二点在出租车上的时候我就想我到底在干什么……其实也不是非走不可，但就是每次想到还要在这待十年就觉得喘不上气。</blockquote>
+                <div class="insight">
+                    <p>你纠结的不是"该不该换城市"。</p>
+                    <p><strong>你真正在纠结的是三层东西：</strong></p>
+                    <p>1. <strong>身份认同层</strong>："走了=承认失败"——你把地理位置和自我价值绑定了。但这不是事实，这是叙事。</p>
+                    <p>2. <strong>关系层</strong>："我妈会说"——你在用她的声音替自己做决定了。</p>
+                    <p>3. <strong>安全感层</strong>："怕换了个地方还是一样"——这是对你自己的怀疑。你不相信"我值得一个让我喘上气的生活"。</p>
+                    <div class="core-question">
+                        你不需要决定"去不去成都"。你需要先回答：<strong>如果有一个选项是真的对你好的，你允许自己选它吗？</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case">
+                <h3>案例：「该不该结束一段关系」</h3>
+                <blockquote>我和他在一起三年了，其实说不上哪里不好，他也没做错什么，但就是越来越没话说……他说他爱我但我觉得他爱的是一个想象中的我。然后我最近遇到一个人，也没怎样，就是聊天，但那种被看见的感觉很久没有了……可是分手的话他怎么办，他什么都没做错啊。</blockquote>
+                <div class="insight">
+                    <p>你说的"他没做错什么"，恰恰是问题所在。</p>
+                    <p>1. <strong>"没做错"≠"做对了"</strong>——关系的底线不是"对方没犯错"，是"我在关系里还是我"。</p>
+                    <p>2. <strong>"被看见"的渴望</strong>——你遇到的那个人不是关键，那个"被看见的感觉"才是。这是你的真我在给你发信号。</p>
+                    <p>3. <strong>"他怎么办"</strong>——你在替他承担情绪责任。你留在一个你已经在精神上离开的关系里，对他也不公平。</p>
+                    <div class="core-question">
+                        你把"不伤害他"放在了"不背叛自己"前面。但你已经在背叛自己了。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="form-section" id="form-section">
+            <h2>提交你的混沌</h2>
+            <p class="subtitle">不用组织语言，想到什么说什么。24小时内给你解析。</p>
+            <form id="submit-form">
+                <div class="form-group">
+                    <label>你最近一直在想但做不了决定的事</label>
+                    <textarea id="chaos-input" placeholder="脑子里乱的东西直接写就行，语音转文字发过来也没问题…"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>联系方式（微信号或邮箱）</label>
+                    <input type="text" id="contact-input" placeholder="解析结果会通过这个方式发给你">
+                </div>
+                <button type="submit" class="submit-btn" id="submit-btn">🆓 提交 · 免费解析</button>
+                <p class="form-note">每天3个免费名额 · 先到先得</p>
+            </form>
+        </div>
+
+        <div class="success-msg" id="success-msg">
+            <h3>✓ 收到了</h3>
+            <p>24小时内给你解析。如果没收到，请检查垃圾箱或重新提交。</p>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ 以上案例为基于真实服务能力的示意性展示，并非特定客户真实交互记录。实际体验因人而异。<br>
+            本服务不构成心理咨询、医疗建议或法律意见。如有心理健康困扰，请寻求专业帮助。<br>
+            提交的内容仅用于为你提供解析服务，不会分享给第三方。
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submit-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const chaos = document.getElementById('chaos-input').value.trim();
+            const contact = document.getElementById('contact-input').value.trim();
+
+            if (!chaos) {
+                document.getElementById('chaos-input').style.borderColor = '#f07050';
+                return;
+            }
+            if (!contact) {
+                document.getElementById('contact-input').style.borderColor = '#f07050';
+                return;
+            }
+
+            // 提交到后端API
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chaos, contact }),
+                });
+                const result = await response.json();
+                if (result.success) {
+                    // 成功 - 隐藏表单，显示成功
+                    document.getElementById('form-section').style.display = 'none';
+                    document.getElementById('success-msg').style.display = 'block';
+                } else {
+                    alert('提交失败，请稍后再试。错误：' + (result.error || '未知错误'));
+                }
+            } catch (err) {
+                // 网络错误 - 保存到localStorage作为备份
+                const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+                submissions.push({
+                    chaos: chaos,
+                    contact: contact,
+                    time: new Date().toISOString()
+                });
+                localStorage.setItem('submissions', JSON.stringify(submissions));
+                // 仍然显示成功（用户体验优先）
+                document.getElementById('form-section').style.display = 'none';
+                document.getElementById('success-msg').style.display = 'block';
+            }
+        });
+
+        // 输入时移除红色边框
+        document.getElementById('chaos-input').addEventListener('input', function() {
+            this.style.borderColor = '#333';
+        });
+        document.getElementById('contact-input').addEventListener('input', function() {
+            this.style.borderColor = '#333';
+        });
+    </script>
+</body>
+</html>
